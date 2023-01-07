@@ -9,6 +9,9 @@ class Student{
 
   //constructor
   Student({ this.name, this.family, this.birthDate, this.nationalCode});
+  Student.withNationalCode(int nationalCod){
+    nationalCode = nationalCod;
+  }
   Student.withOutProperty();
 
 
@@ -26,6 +29,16 @@ class Student{
 
 List<Student> students=[];
 
+int findElementIndex(int serialNumberGiven ){
+  int elementIndex=-1;
+  for(int i=0;i<students.length;i++) {
+    if (serialNumberGiven == students[i].nationalCode ) {
+      elementIndex=i;
+    }
+  }
+  return elementIndex;
+}
+
 //give student from client
 void getStudent(){
   print("Enter name: ");
@@ -39,98 +52,97 @@ void getStudent(){
   students.add(Student(name: name, family: family, birthDate: birthDate, nationalCode: nationalCode));
 
 }
-
-
 void printAllStudent(){
   for(int i=0;i<=students.length -1 ;i++){
    students[i].showInfo();
   }
 }
-
 void search(){
-  // Student student=Student.withOutProperty();
-
   int inputNationalCode=int.parse(stdin.readLineSync()!);
 
-  for(int i=0;i<students.length-1;i++){
-    if(inputNationalCode==students[i].nationalCode){
-      print("name is ${students[i].name}");
-      print("family is ${students[i].family}");
-      print("birthDate is ${students[i].birthDate}");
-      print("nationalCode is ${students[i].nationalCode}");
-    }
-  }
-
-
-
-}
-
-int findElementIndex(int serialNumberGiven ){
-  int elementIndex=-1;
-  for(int i=0;i<students.length;i++) {
-    if (serialNumberGiven == students[i].nationalCode ) {
-      elementIndex=i;
-    }
-  }
-  return elementIndex;
-}
-
-void update(){
-  stdout.write("Enter national Code for update: ");
-  int inputNationalCode=int.parse(stdin.readLineSync()!);
-
-  //finde index of element for update
   int elementIndex=findElementIndex(inputNationalCode);
 
-
-
-
-  for(int i=elementIndex;i<students.length-1;i++){
-    stdout.write("select an item:");
-    print("""
-    1= change name;
-    2= change family;
-    3= change BirthDate
-    4= change nationalCode
-    """);
-    int menuItem=int.parse(stdin.readLineSync()!);
-
-    switch(menuItem){
-      case 1:
-
+    if(inputNationalCode==students[elementIndex].nationalCode){
+      print("--------------------------------------------");
+      print("name is ${students[elementIndex].name}");
+      print("family is ${students[elementIndex].family}");
+      print("birthDate is ${students[elementIndex].birthDate}");
+      print("nationalCode is ${students[elementIndex].nationalCode}");
+      print("--------------------------------------------");
     }
-  }
-
-
-  // switch(menuItem) {
-  //   case 1:
-  //     print("enter new name: ");
-  //     String newName=stdin.readLineSync()!;
-  //     students
-  //     break;
-  //   default:
-  // }
 
 }
+void update(){
+  print("Enter national Code for update: ");
+  int inputNationalCode=int.parse(stdin.readLineSync()!);
+
+//  find index of element for update
+  int elementIndex=findElementIndex(inputNationalCode);
+
+if(inputNationalCode==students[elementIndex].nationalCode){
+  print("""
+    select an item:
+    
+    1= change name;
+    2= change family;
+    3= change BirthDate;
+    4= change nationalCode;
+    """);
+  int menuItem=int.parse(stdin.readLineSync()!);
+
+  switch(menuItem){
+    case 1:
+      print("Enter New name for update:");
+      String newName=stdin.readLineSync()!;
+      students[elementIndex].name=newName;
+      print("name edit is Successful √");
+      break;
+    case 2:
+      print("Enter New family for update:");
+      String newFamily=stdin.readLineSync()!;
+      students[elementIndex].family=newFamily;
+      print("family edit is Successful √");
+      break;
+    case 3:
+      print("Enter New birthDate for update:");
+      String newBirthDate=stdin.readLineSync()!;
+      students[elementIndex].birthDate=newBirthDate;
+      print("birthDate edit is Successful √");
+      break;
+    case 4:
+      print("Enter New nationalCode for update:");
+      int newNationalCode=int.parse(stdin.readLineSync()!) ;
+      students[elementIndex].nationalCode=newNationalCode;
+      print("nationalCode edit is Successful √");
+      break;
+    default:
+      print("invalid input");
+      break;
+  }
+}
+
+}
+void delete(){
+  print("Enter national Code for delete student: ");
+  int nationCode=int.parse(stdin.readLineSync()!);
+  int elementIndex=findElementIndex(nationCode);
+  students.removeAt(elementIndex);
+  print("delete is success √");
+}
+
+
 void main() {
-
-
-  
-  // Student student= Student();
-
   bool flag =false;
 
-
-
   for(;flag==false;){
-    print("select an item;");
+    print("select an item=>");
     print("""
       0 = end register;
-      1 = insert user;
-      2 = read user;
-      3 = update user;
+      1 = create student;
+      2 = read students;
+      3 = update student;
       4 = delete user;
-      5 = search;
+      5 = search student;
       """);
 
     int menuItem=int.parse(stdin.readLineSync()!);
@@ -141,16 +153,15 @@ void main() {
       break;
     case 1:
      getStudent();
-     printAllStudent();
       break;
     case 2:
-      print("read user");
+      printAllStudent();
       break;
     case 3:
-      //update
+      update();
       break;
     case 4:
-      print("delete user");
+      delete();
       break;
     case 5:
       search();
@@ -164,9 +175,3 @@ void main() {
 
 
 
-//    var setName=<type>{};
-//     Or
-//     Set<type> setname ={};
-// union
-// difference
-// intersection
