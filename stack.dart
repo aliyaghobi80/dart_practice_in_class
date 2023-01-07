@@ -2,6 +2,7 @@
 import 'dart:io';
 
 void main() {
+  // instance of stack class
 Stack stack= Stack();
 StackReveresString stackReveresString=StackReveresString();
 
