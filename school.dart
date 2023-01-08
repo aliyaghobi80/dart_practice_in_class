@@ -141,13 +141,13 @@ void search(){
 }
 
 int findElementIndex(int serialNumberGiven ){
-  int idxx=-1;
+  int elementIndex=-1;
   for(int i=0;i<index;i++) {
     if (serialNumberGiven == studentSerialNumber[i] ) {
-      idxx=i;
+      elementIndex=i;
     }
   }
-  return idxx;
+  return elementIndex;
 }
 
 void deleteStudent(){
