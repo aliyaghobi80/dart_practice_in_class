@@ -14,8 +14,6 @@ class Person {
   // void set birthDate(int inputBirthDate ) {
   //   _birthDate = inputBirthDate;
   // }
-
-
 }
 
 main() {
