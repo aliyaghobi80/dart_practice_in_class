@@ -105,7 +105,6 @@ void push(String inputValue){
   originalList.add(inputValue);
 }
 List<String?> pop(){
-
     String? lastItem=originalList.last;
 
     reversList.add(lastItem);
