@@ -1,23 +1,19 @@
 
+import 'package:classp/dart_practice/interface/bird/bird.dart';
 import 'package:classp/dart_practice/interface/bird/interfaces/interfaces.dart';
 import 'package:classp/dart_practice/interface/bird/mammals.dart';
 
-abstract class Cage {
-
- void gate(FlyInterface flyInterface);
-}
-
-class RealCage extends Cage{
+class Cage {
   @override
-  void gate(FlyInterface flyInterface) {
-
+  void gate(FlyInterface bird) {
+    print("${bird.getName()} is flying...");
   }
 }
+
 main() {
-Cage cage=RealCage();
+Cage cage=Cage();
 
-Bat bat =Bat(name: "BatWhite");
-
+Bat bat =Bat(2,"Bat purple");
 // Penguin penguin=Penguin(name: "Penguin");
 
 //if pass penguin into gate , we give an error Because penguins don't fly
