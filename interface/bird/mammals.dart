@@ -4,21 +4,19 @@ import 'interfaces/interfaces.dart';
 
 abstract class Mammals{
   String name;
-  Mammals({required this.name});
-  String getName();
+  int leg;
+  Mammals({required this.leg, required this.name });
 }
 
 class Bat extends Mammals implements FlyInterface{
-  Bat({required super.name});
+  Bat(int inputLeg,String inputName):super(leg: inputLeg,name: inputName);
 
   @override
   void fly() {
-    print("i am $name and Mammals and can Fly");
+    print("I am a $name, I have $leg legs and I fly ");
   }
-
   @override
   String getName() {
     return name;
   }
-
 }

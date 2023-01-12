@@ -2,8 +2,8 @@ import 'package:classp/dart_practice/interface/bird/bird.dart';
 import 'package:classp/dart_practice/interface/bird/mammals.dart';
 
 main() {
-  Kabotar kabotar= Kabotar("KabootarMeshki");
-  Bat bat = Bat(name: "BatBlack");
+  Kabotar kabotar= Kabotar("Kabootar Meshki");
+  Bat bat = Bat(2,  "BatBlack");
   Penguin penguin = Penguin(name: "WhitePenguin");
 
   kabotar.fly();
