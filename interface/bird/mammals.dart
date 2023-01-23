@@ -8,6 +8,10 @@ abstract class Mammals{
   Mammals({required this.leg, required this.name });
 }
 
+class Khazande {
+  String? khazand(){}
+}
+
 class Bat extends Mammals implements FlyInterface{
   Bat(int inputLeg,String inputName):super(leg: inputLeg,name: inputName);
 

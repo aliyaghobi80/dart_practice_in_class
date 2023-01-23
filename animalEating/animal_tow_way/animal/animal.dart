@@ -13,8 +13,8 @@ abstract class Animal{
   void eat();
 }
 
-class Lien extends Animal{
-  Lien({required super.name, required super.food});
+class Lion extends Animal{
+  Lion({required super.name, required super.food});
 
   @override
   void eat() {
@@ -32,13 +32,13 @@ main() {
   Goosht goosht= Goosht();
   Sabzi sabzi= Sabzi();
 
-  Lien lien= Lien(name: "shir", food: goosht);
+  Lion lion= Lion(name: "shir", food: goosht);
 
   Cat cat= Cat(goosht, "gorbe");
 
   Zebra zebra = Zebra(name: "khar", food: sabzi);
 
-  lien.eat();
+  lion.eat();
   zebra.watEit();
   cat.watEit();
 }
